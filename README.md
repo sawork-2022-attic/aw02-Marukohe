@@ -17,7 +17,7 @@ db：是Data Access Layer，用于存储系统内的数据，这里将数据存�
 a: Add a Product to Cart  
 l: List Products in Cart  
 m: Modify the amount of a Product  
-n: New Cart or Empty an Existing Cart 
+n: New Cart or Empty an Existing Cart  
 p: List Products  
 r: Delete a Product in Cart  
   
