@@ -26,7 +26,7 @@ public class PosCommand {
         return stringBuilder.toString();
     }
 
-    @ShellMethod(value = "New Cart", key = "n")
+    @ShellMethod(value = "New Cart or Empty an Existing Cart", key = "n")
     public String newCart() {
         return posService.newCart() + " OK";
     }
@@ -34,6 +34,38 @@ public class PosCommand {
     @ShellMethod(value = "Add a Product to Cart", key = "a")
     public String addToCart(String productId, int amount) {
         if (posService.add(productId, amount)) {
+            return posService.getCart().toString();
+        }
+        return "ERROR";
+    }
+
+    @ShellMethod(value = "List Products in Cart", key = "l")
+    public String listCart() {
+        if (posService.getCart() != null) {
+            return posService.getCart().toString();
+        }
+        return "NO CART NOW";
+    }
+
+    @ShellMethod(value = "Modify the amount of a Product", key = "m")
+    public String modifyProduct(String productId, int amount) {
+        if (posService.getCart() == null) {
+            return "NO CART NOW";
+        }
+
+        if (posService.add(productId, amount)) {
+            return posService.getCart().toString();
+        }
+        return "ERROR";
+    }
+
+    @ShellMethod(value = "Delete a Product in Cart", key = "r")
+    public String deleteProduct(String productId) {
+        if (posService.getCart() == null) {
+            return "NO CART NOW";
+        }
+
+        if (posService.remove(productId)) {
             return posService.getCart().toString();
         }
         return "ERROR";

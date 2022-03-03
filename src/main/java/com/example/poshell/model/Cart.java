@@ -14,6 +14,10 @@ public class Cart {
         return items.add(item);
     }
 
+    public boolean removeItem(Item item) {
+        return items.remove(item);
+    }
+
     @Override
     public String toString() {
         if (items.size() ==0){

@@ -1,5 +1,26 @@
 # POS in Shell
 
+**asciinema**  
+https://asciinema.org/a/NcPCYVJAufHljxG2kmiHik1mT
+
+To run
+```shell
+mvn clean spring-boot:run
+```
+
+**分层设计**  
+biz：是Business Logic Layer，用于实现具体的指令效果并检查数据合法性，是连接Presentation Layer和ata Access Layer的纽带；  
+cli：是Presentation Layer，用于跟用户交互，介绍用户输入的指令并展示用户想要获得的数据；  
+db：是Data Access Layer，用于存储系统内的数据，这里将数据存储在了内存中，也可以接入一个数据库保存数据。  
+
+**指令介绍**  
+a: Add a Product to Cart  
+l: List Products in Cart  
+m: Modify the amount of a Product  
+n: New Cart or Empty an Existing Cart 
+p: List Products  
+r: Delete a Product in Cart  
+  
 The demo shows a simple POS system with command line interface. Currently it implements three commands which you can see using the `help` command.
 
 ```shell
